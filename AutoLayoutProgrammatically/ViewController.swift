@@ -21,8 +21,12 @@ class ViewController: UIViewController {
     
     let introTextView:UITextView = {
         let textView = UITextView()
-        textView.text = "Join us today in our fun games!"
-        textView.font = UIFont.boldSystemFont(ofSize: 18)
+        let attributedText = NSMutableAttributedString(string: "Join us today in our fun games!",
+                                                       attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 18)])
+        attributedText.append(NSAttributedString(string: "\n\nAre you ready for loads of loads of fun? Don't wait any longer! we hope to see you in our store soon.", attributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize:13),NSAttributedString.Key.foregroundColor : UIColor.gray]))
+        //textView.text = "Join us today in our fun games!"
+        //textView.font = UIFont.boldSystemFont(ofSize: 18)
+        textView.attributedText = attributedText
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textAlignment = .center
         textView.isEditable = false
@@ -62,10 +66,10 @@ class ViewController: UIViewController {
         //bearImageView.topAnchor.constraint(equalTo: topImageViewContainer.topAnchor, constant: 100).isActive = true
         bearImageView.centerXAnchor.constraint(equalTo: topImageViewContainer.centerXAnchor).isActive = true
         bearImageView.centerYAnchor.constraint(equalTo: topImageViewContainer.centerYAnchor).isActive = true
-        bearImageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        bearImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        bearImageView.heightAnchor.constraint(equalTo: topImageViewContainer.heightAnchor, multiplier: 0.5).isActive = true
+        //bearImageView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         
-        introTextView.topAnchor.constraint(equalTo: bearImageView.bottomAnchor, constant: 150).isActive = true
+        introTextView.topAnchor.constraint(equalTo: topImageViewContainer.bottomAnchor).isActive = true
         //introTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         introTextView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         introTextView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
